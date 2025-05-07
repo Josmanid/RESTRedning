@@ -52,7 +52,37 @@ namespace RESTRedning.Models.Tests
         [TestMethod()]
         public void LatitudeTest()
         {
-            Assert.are
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => _gpsData.Latitude = 91);
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => _gpsData.Latitude = -91);
+
+            Assert.AreEqual(55.63066666666667, _gpsData.Latitude);
+
+            _gpsData.Latitude = 90;
+            Assert.AreEqual(90, _gpsData.Latitude);
+
+            _gpsData.Latitude = -90;
+            Assert.AreEqual(-90, _gpsData.Latitude);
+
+
+        }
+
+        [TestMethod()]
+        public void LongtitudeTest()
+        {
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => _gpsData.Longitude = 181);
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => _gpsData.Longitude = -181);
+
+            _gpsData.Longitude = 180;
+            Assert.AreEqual(180, _gpsData.Longitude);
+
+            _gpsData.Longitude = -180;
+            Assert.AreEqual(-180, _gpsData.Longitude);
         }
         
         [TestMethod()]

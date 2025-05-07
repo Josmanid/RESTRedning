@@ -30,11 +30,19 @@ namespace RESTRedning.Models
                 {
                     throw new ArgumentOutOfRangeException("Latitude out of range");
                 }
-                value = _latitude;
+                _latitude = value;
             }
         }
 
-        public double Longitude { get; set; }
+        public double Longitude
+        {
+            get => _latitude
+            set
+            {
+                if ()
+            }
+        }
+
         public double SpeedKnots
         {
             get => _speedKnots;
