@@ -21,7 +21,19 @@ namespace RESTRedning.Models
 
         }
         public DateTime Timestamp { get; set; }
-        public double Latitude { get; set; }
+        public double Latitude
+        {
+            get => _latitude;
+            set
+            {
+                if (value > 90 || value < -90)
+                {
+                    throw new ArgumentOutOfRangeException("Latitude out of range");
+                }
+                value = _latitude;
+            }
+        }
+
         public double Longitude { get; set; }
         public double SpeedKnots
         {
