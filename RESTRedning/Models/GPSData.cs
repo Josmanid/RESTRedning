@@ -28,9 +28,9 @@ namespace RESTRedning.Models
             get => _speedKnots;
             set
             {
-                if (value > 1)
+                if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The velocity is to fast!");
+                    throw new ArgumentOutOfRangeException("The velocity is zero!");
                 }
                 _speedKnots = value;
             }

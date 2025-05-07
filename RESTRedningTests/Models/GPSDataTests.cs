@@ -29,7 +29,7 @@ namespace RESTRedning.Models.Tests
             Assert.AreEqual(1, dataOK.SpeedKnots);
             //må ikke have hastighed over 1 knob
             Assert.ThrowsException<ArgumentOutOfRangeException>(
-                () => dataOK.SpeedKnots = 2);
+                () => dataOK.SpeedKnots = -1);
 
 
 
