@@ -5,11 +5,7 @@ namespace RESTRedning.Models
     public class GPSData
     {
         private int _id;
-        private int _year;
-        private int _month;
-        private int _day;
-        private int _hour;
-        private int _minute;
+        private DateTime _timeStamp;
         private double _latitude;
         private double _longitude;
         private double _speedKnots;
@@ -24,24 +20,16 @@ namespace RESTRedning.Models
             }
 
         }
-        public int Year { get; set; }
-        public int Month { get; set; }
-        public int Day { get; set; }
-        public int Hour { get; set; }
-        public int Minute { get; set; }
+        public DateTime Timestamp { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public double SpeedKnots { get; set; }
 
-        public GPSData(int id, int year, int month, int day, int hour, int minut,
+        public GPSData(int id, DateTime timeStamp,
             double latitude, double longitude, double speedKnot)
         {
             Id = id;
-            Year = year;
-            Month = month;
-            Day = day;
-            Hour = hour;
-            Minute = minut;
+            Timestamp = timeStamp;
             Latitude = latitude;
             Longitude = longitude;
             SpeedKnots = speedKnot;

@@ -13,7 +13,7 @@ namespace RESTRedning.Models.Tests
 
         [TestMethod()]
         public void MaxSpeedTest() {
-            GPSData data = new GPSData();
+            GPSData data = new GPSData { SpeedKnots:23}
 
 
         }
