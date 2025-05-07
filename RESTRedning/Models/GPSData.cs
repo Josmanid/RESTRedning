@@ -45,6 +45,10 @@ namespace RESTRedning.Models
             SpeedKnots = speedKnot;
 
         }
+        public GPSData()
+        {
+            
+        }
 
         public override string ToString() {
             return "";
