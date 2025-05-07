@@ -10,6 +10,15 @@ namespace RESTRedning.Models.Tests
     [TestClass()]
     public class GPSDataTests
     {
+
+        [TestMethod()]
+        public void MaxSpeedTest() {
+            GPSData data = new GPSData();
+
+
+        }
+
+
         [TestMethod()]
         public void ToStringTest() {
             Assert.Fail();
