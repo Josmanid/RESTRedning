@@ -66,7 +66,19 @@ namespace RESTRedning.Models.Tests
         [TestMethod()]
         public void ToStringTest()
         {
-            Assert.Fail();
+            //Arrange 
+            GPSData gpsData = new GPSData(
+                speedKnot: 1,
+                timeStamp: DateTime.Now,
+                latitude: 55.63066666666667,
+                longitude: 12.077896666666666,
+                id: 1
+            ); 
+            // Act 
+            string result = gpsData.ToString();
+            // Assert 
+            Assert.AreEqual("", result);
+            
         }
         
     }
