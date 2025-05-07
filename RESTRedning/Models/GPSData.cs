@@ -49,12 +49,12 @@ namespace RESTRedning.Models
         }
 
         public GPSData(int id, DateTime timeStamp,
-            double latitude, double longitude, double speedKnot) {
+            double latitude, double longitude, double speedKnots) {
             Id = id;
             Timestamp = timeStamp;
             Latitude = latitude;
             Longitude = longitude;
-            SpeedKnots = speedKnot;
+            SpeedKnots = speedKnots;
 
         }
         public GPSData()
