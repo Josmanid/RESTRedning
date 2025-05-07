@@ -12,14 +12,15 @@ namespace RESTRedning.Models.Tests
     {
 
         [TestMethod()]
-        public void MaxSpeedTest() {
+        public void MaxSpeedTest()
+        {
             //Arrange
             GPSData dataOK = new GPSData(speedKnot: 1,
                 timeStamp: DateTime.Now,
                 latitude: 55.63066666666667,
                 longitude: 12.077896666666666,
                 id: 1
-                );
+            );
 
             // Act
 
@@ -30,17 +31,43 @@ namespace RESTRedning.Models.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(
                 () => dataOK.SpeedKnots = 2);
 
-            
+
 
 
 
 
         }
-
 
         [TestMethod()]
-        public void ToStringTest() {
+        public void TimeStampTest()
+        {
+            //Arrange
+            DateTime now = DateTime.Now;
+            GPSData gpsData = new GPSData(
+                speedKnot: 1,
+                timeStamp: now,
+                latitude: 55.63066666666667,
+                longitude: 12.077896666666666,
+                id: 1
+            );
+          
+            // Act
+            DateTime timestampResult = gpsData.Timestamp;
+           
+            // Assert
+            Assert.AreEqual(now.Year, timestampResult.Year);
+            Assert.AreEqual(now.Month, timestampResult.Month);
+            Assert.AreEqual(now.Day, timestampResult.Day);
+            Assert.AreEqual(now.Hour, timestampResult.Hour);
+            Assert.AreEqual(now.Minute, timestampResult.Minute);
+            
+        }
+        
+        [TestMethod()]
+        public void ToStringTest()
+        {
             Assert.Fail();
         }
+        
     }
 }
