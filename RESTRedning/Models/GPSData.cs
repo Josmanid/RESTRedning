@@ -15,7 +15,7 @@ namespace RESTRedning.Models
             get => _id;
             set
             {
-                 _id = value;
+                _id = value;
 
             }
 
@@ -23,17 +23,27 @@ namespace RESTRedning.Models
         public DateTime Timestamp { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public double SpeedKnots { get; set; }
+        public double SpeedKnots
+        {
+            get => _speedKnots;
+            set
+            {
+                if (value > 1)
+                {
+                    throw new ArgumentOutOfRangeException("The velocity is to fast!");
+                }
+                _speedKnots = value;
+            }
+        }
 
         public GPSData(int id, DateTime timeStamp,
-            double latitude, double longitude, double speedKnot)
-        {
+            double latitude, double longitude, double speedKnot) {
             Id = id;
             Timestamp = timeStamp;
             Latitude = latitude;
             Longitude = longitude;
             SpeedKnots = speedKnot;
-            
+
         }
 
         public override string ToString() {
