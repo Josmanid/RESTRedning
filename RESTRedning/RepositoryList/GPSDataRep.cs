@@ -19,7 +19,17 @@ namespace RESTRedning.RepositoryList
             return result;
         }
 
-        public GPSData GetGPSData() { }
+
+        public GPSData AddGPSData(GPSData GPSData)
+        {
+            if (GPSData == null)
+            {
+                throw new ArgumentNullException("GPS data cannot be null");
+            }
+            GPSDataList.Add(GPSData);
+            return GPSData;
+        }
+
 
 
 
