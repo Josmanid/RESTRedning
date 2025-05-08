@@ -36,10 +36,14 @@ namespace RESTRedning.Models
 
         public double Longitude
         {
-            get => _latitude
+            get => _longitude;
             set
             {
-                if ()
+                if (value > 180 || value < -180)
+                {
+                    throw new ArgumentOutOfRangeException("Longitude out of range");
+                }
+                _longitude = value;
             }
         }
 
