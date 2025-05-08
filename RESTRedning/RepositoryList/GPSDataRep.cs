@@ -4,20 +4,22 @@ namespace RESTRedning.RepositoryList
 {
     public class GPSDataRep
     {
-        private List<GPSData>? _GPSDatarep;
+        public List<GPSData>? GPSDataList { get; private set; }
 
 
         public GPSDataRep()
         {
-            _GPSDatarep = new List<GPSData>();
+            GPSDataList = new List<GPSData>();
         }
 
         public IEnumerable<GPSData> GetGPSData()
         {
-            IEnumerable<GPSData> result = new List<GPSData>(_GPSDatarep);
+            IEnumerable<GPSData> result = new List<GPSData>(GPSDataList);
 
             return result;
         }
+
+        public GPSData GetGPSData() { }
 
 
 

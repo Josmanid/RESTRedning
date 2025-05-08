@@ -12,35 +12,41 @@ namespace RESTRedning.RepositoryList.Tests
     [TestClass()]
     public class GPSDataRepTests
     {
-        private List<GPSData> rep;
+        private GPSDataRep rep;
 
         [TestInitialize()]
         public void setup() {
 
 
-            rep = new List<GPSData>();
+            rep = new GPSDataRep();
 
             var mockData1 = new GPSData(1, DateTime.Now.AddMinutes(-10), 55, 112, 4);
 
-            var mockData2 = new GPSData(2, DateTime.Now.AddMinutes(-5), 42, 115, 10);
+            var mockData2 = new GPSData(1, DateTime.Now.AddMinutes(-5), 42, 115, 10);
 
-            rep.Add(mockData1);
-            rep.Add(mockData2);
+            rep.GPSDataList.Add(mockData1);
+            rep.GPSDataList.Add(mockData2);
         }
 
         [TestMethod()]
         public void GetGPSDataTest()
         {
-            List<GPSData> GPSData = rep.GetGPSData();
+            IEnumerable<GPSData> GPSData = rep.GetGPSData();
             Assert.AreEqual(2, GPSData.Count());
         }
 
         [TestMethod()]
         public void AddGPSDataTest() 
         {
+            //Arrange
+            GPSData addedLoc = new GPSData(1, DateTime.Now.AddMinutes(-5), 0, 1, 5);
+            //Act
+            GPSData AddedGPSData = rep.AddGPSData(addedLoc);
+            IEnumerable<GPSData> GPSData = rep.GetGPSData();
 
+            //Assert
+            Assert.AreEqual(3, GPSData.Count());
 
-            
         }
     }
 }
