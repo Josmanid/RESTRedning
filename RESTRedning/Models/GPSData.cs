@@ -20,7 +20,20 @@ namespace RESTRedning.Models
             }
 
         }
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp
+        {
+            get => _timeStamp;
+            set
+            {
+                if (value > DateTime.Now)
+                {
+                    throw new ArgumentOutOfRangeException("Time must not be in the future");
+                }
+                _timeStamp = value;
+            }
+
+
+        }
         public double Latitude
         {
             get => _latitude;
@@ -69,16 +82,15 @@ namespace RESTRedning.Models
             SpeedKnots = speedKnots;
 
         }
-        public GPSData()
-        {
-            
+        public GPSData() {
+
         }
 
         public override string ToString() {
             return "";
         }
 
-        
+
 
     }
 }

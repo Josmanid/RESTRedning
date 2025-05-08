@@ -47,6 +47,10 @@ namespace RESTRedning.Models.Tests
             Assert.AreEqual(_gpsData.Timestamp.Day, timestampResult.Day);
             Assert.AreEqual(_gpsData.Timestamp.Hour, timestampResult.Hour);
             Assert.AreEqual(_gpsData.Timestamp.Minute, timestampResult.Minute);
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(
+                () => _gpsData.Timestamp = DateTime.Now.AddDays(1) );
+
         }
 
         [TestMethod()]
