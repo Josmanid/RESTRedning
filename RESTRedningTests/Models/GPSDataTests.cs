@@ -30,7 +30,7 @@ namespace RESTRedning.Models.Tests
         {
             // Assert
             Assert.AreEqual(1, _gpsData.SpeedKnots);
-            //må ikke have hastighed over 1 knob
+            //må ikke have hastighed under 0
             Assert.ThrowsException<ArgumentOutOfRangeException>(
                 () => _gpsData.SpeedKnots = -1);
         }
