@@ -39,13 +39,28 @@ namespace RESTRedning.Controllers
         }
 
 
-
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         // POST api/<GPSController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<GPSData> Post([FromBody] GPSData newGPSData)
         {
+            try
+            {
+                GPSData createdGPSData = _GPSDataRepo.AddGPSData(newGPSData);
+                return Created("/" + createdGPSData.Id, createdGPSData);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest("GPS can't be null!:" + ex.Message);
+            }
+
+            catch (ArgumentException ex)
+            {
+                return BadRequest("GPS is not valid!:" + ex.Message);
+            }
 
         }
 
-    }
+    } 
 }
