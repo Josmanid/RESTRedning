@@ -10,8 +10,15 @@ namespace RESTRedning.RepositoryList
         public GPSDataRep()
         {
             _GPSDatarep = new List<GPSData>();
-
         }
+
+        public IEnumerable<GPSData> GetGPSData()
+        {
+            IEnumerable<GPSData> result = new List<GPSData>(_GPSDatarep);
+
+            return result;
+        }
+
 
 
     }
