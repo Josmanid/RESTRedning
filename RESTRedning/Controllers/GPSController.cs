@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RESTRedning.Models;
 using RESTRedning.RepositoryList;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,16 +27,23 @@ namespace RESTRedning.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         // GET: api/<GPSController>
         [HttpGet]
-        public IEnumerable<string> Get() 
+        public ActionResult<IEnumerable<GPSData>> Get()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<GPSData> result = _GPSDataRepo.GetGPSData();
+
+            if (result.Any())
+            {
+                return Ok(result);
+            }
+            return NoContent();
         }
 
-       
+
 
         // POST api/<GPSController>
         [HttpPost]
-        public void Post([FromBody] string value) {
+        public void Post([FromBody] string value)
+        {
         }
 
     }
