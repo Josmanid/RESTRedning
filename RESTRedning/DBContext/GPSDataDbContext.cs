@@ -11,6 +11,6 @@ namespace RESTRedning.DBContext
 
         }
 
-        public DbSet<GPSData> GPSData { get; set; }
+        public DbSet<GPSData> GPSDataB { get; set; }
     }
 }
