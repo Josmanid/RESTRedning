@@ -6,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<GPSDataDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
@@ -17,8 +21,6 @@ builder.Services.AddCors(options =>
                               });
 });
 
-builder.Services.AddDbContext<GPSDataDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString)("DefaultConnection")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSingleton<GPSDataRep>(new GPSDataRep());
