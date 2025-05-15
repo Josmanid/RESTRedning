@@ -17,12 +17,23 @@ namespace RESTRedning.Repositories.Tests
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
         }
-
+        //Laver en instans
         [TestMethod()]
         public void GPSDataDbRepTest() {
-            Assert.Fail();
-        }
+            // Arrange
+            var options = CreateInMemoryDatabaseOptions();
 
+            // Act
+            using (var context = new GPSDataDbContext(options))
+            {
+                // Create repository with context
+                var repository = new GPSDataDbRep(context);
+
+                // Assert
+                Assert.IsNotNull(repository);
+            }
+        }
+     
         [TestMethod()]
         public void GetGPSDataTest() {
             Assert.Fail();
