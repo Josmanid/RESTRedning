@@ -1,16 +1,23 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RESTRedning.DBContext;
+using RESTRedning.Models;
 using RESTRedning.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RESTRedning.Repositories.Tests
 {
     [TestClass()]
     public class GPSDataDbRepTests
     {
+        private DbContextOptions<GPSDataDbContext> CreateInMemoryDatabaseOptions() {
+            // Create a unique database name to avoid conflicts between tests
+            return new DbContextOptionsBuilder<GPSDataDbContext>()
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .Options;
+        }
+
         [TestMethod()]
         public void GPSDataDbRepTest() {
             Assert.Fail();
