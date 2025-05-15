@@ -5,8 +5,14 @@ namespace RESTRedning.Repositories
 {
     public class GPSDataDbRep : GPSDataDbContext
     {
-        public List<GPSData>? GPSDataList { get; private set; }
 
+        private readonly GPSDataDbContext _dbContext;
+        public List<GPSData>? GPSDataList { get; private set; }
+        public GPSDataDbRep(GPSDataDbContext dbContext, List<GPSData>? gPSDataList)
+        {
+            _dbContext = dbContext;
+            GPSDataList = gPSDataList;
+        }
 
         public GPSDataDbRep() {
             GPSDataList = new List<GPSData>();
