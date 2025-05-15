@@ -14,7 +14,6 @@ namespace RESTRedning.Repositories
         public GPSDataDbRep(GPSDataDbContext dbContext)
         {
             _dbContext = dbContext;
-           
         }
 
 
