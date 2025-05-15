@@ -1,8 +1,9 @@
-﻿using RESTRedning.Models;
+﻿using RESTRedning.DBContext;
+using RESTRedning.Models;
 
 namespace RESTRedning.Repositories
 {
-    public class GPSDataDbRep
+    public class GPSDataDbRep : GPSDataDbContext
     {
         public List<GPSData>? GPSDataList { get; private set; }
 
