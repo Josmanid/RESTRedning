@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddSingleton<GPSDataRep>(new GPSDataRep());
+//builder.Services.AddSingleton<GPSDataRep>(new GPSDataRep());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

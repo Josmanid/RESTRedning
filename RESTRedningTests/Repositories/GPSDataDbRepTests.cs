@@ -73,7 +73,38 @@ namespace RESTRedning.Repositories.Tests
 
         [TestMethod()]
         public void GetGPSDataTest() {
-            Assert.Fail();
+            //Arrange
+            var options = CreateInMemoryDatabaseOptions();
+            var testData1 = new GPSData
+            {
+                Id = 99, // This should be reset to 0 by the repository
+                Timestamp = DateTime.Now.AddMinutes(-30),
+                Latitude = 56.123456,
+                Longitude = 13.654321,
+                SpeedKnots = 7.5
+            };
+            var testData2 = new GPSData
+            {
+                Id = 99, // This should be reset to 0 by the repository
+                Timestamp = DateTime.Now.AddMinutes(-30),
+                Latitude = 56.123456,
+                Longitude = 13.654321,
+                SpeedKnots = 7.5
+            };
+            //Act
+            using (var context = new GPSDataDbContext(options))
+            {
+                GPSDataDbRep repository = new GPSDataDbRep(context);
+                GPSData add1 = repository.AddGPSData(testData1);
+                GPSData add2 = repository.AddGPSData(testData2);
+                IEnumerable<GPSData> result = repository.GetGPSData();
+
+
+                // Assert - Check the returned object
+                Assert.AreEqual(2, result.Count()); 
+                
+            }
+
         }
 
     }
