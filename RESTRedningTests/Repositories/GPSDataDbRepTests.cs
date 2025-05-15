@@ -17,7 +17,7 @@ namespace RESTRedning.Repositories.Tests
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
         }
-        //Laver en instans
+        //Lav
         [TestMethod()]
         public void GPSDataDbRepTest() {
             // Arrange
@@ -33,15 +33,48 @@ namespace RESTRedning.Repositories.Tests
                 Assert.IsNotNull(repository);
             }
         }
-     
+
+        [TestMethod()]
+        public void AddGPSDataTest() {
+            //Arrange
+            var options = CreateInMemoryDatabaseOptions();
+            var testData = new GPSData
+            {
+                Id = 99, // This should be reset to 0 by the repository
+                Timestamp = DateTime.Now.AddMinutes(-30),
+                Latitude = 56.123456,
+                Longitude = 13.654321,
+                SpeedKnots = 7.5
+            };
+            // Act
+            using (var context = new GPSDataDbContext(options))
+            {
+                var repository = new GPSDataDbRep(context);
+                var result = repository.AddGPSData(testData);
+
+                // Assert - Check the returned object
+                Assert.AreEqual(1, result.Id); // Should have been reset to 1 due to database identity
+                Assert.AreEqual(testData.Timestamp, result.Timestamp);
+                Assert.AreEqual(testData.Latitude, result.Latitude);
+                Assert.AreEqual(testData.Longitude, result.Longitude);
+                Assert.AreEqual(testData.SpeedKnots, result.SpeedKnots);
+            }
+            // Assert - Verify it was saved to the database
+            using (var context = new GPSDataDbContext(options))
+            {
+                Assert.AreEqual(1, context.GPSDataB.Count());
+                var savedData = context.GPSDataB.First();
+                Assert.AreEqual(testData.Timestamp, savedData.Timestamp);
+                Assert.AreEqual(testData.Latitude, savedData.Latitude);
+                Assert.AreEqual(testData.Longitude, savedData.Longitude);
+                Assert.AreEqual(testData.SpeedKnots, savedData.SpeedKnots);
+            }
+        }
+
         [TestMethod()]
         public void GetGPSDataTest() {
             Assert.Fail();
         }
 
-        [TestMethod()]
-        public void AddGPSDataTest() {
-            Assert.Fail();
-        }
     }
 }
