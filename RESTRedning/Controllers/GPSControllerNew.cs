@@ -7,12 +7,12 @@ namespace RESTRedning.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class GPSControllerNew : ControllerBase
+    public class GPSNewController : ControllerBase
     {
 
         public readonly GPSDataDbRep _GPSDbRepo;
 
-        public GPSControllerNew(GPSDataDbRep GPSDataDbRep)
+        public GPSNewController(GPSDataDbRep GPSDataDbRep)
         {
             _GPSDbRepo = GPSDataDbRep;
         }
