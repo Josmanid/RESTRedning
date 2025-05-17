@@ -1,6 +1,7 @@
 using RESTRedning.DBContext;
 using RESTRedning.RepositoryList;
 using Microsoft.EntityFrameworkCore;
+using RESTRedning.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,8 @@ builder.Services.AddCors(options =>
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddSingleton<GPSDataRep>(new GPSDataRep());
+//builder.Services.AddSingleton<GPSDataRep>(new GPSDataRep());
+builder.Services.AddScoped<GPSDataDbRep>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
