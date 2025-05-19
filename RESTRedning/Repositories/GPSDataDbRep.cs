@@ -25,7 +25,7 @@ namespace RESTRedning.Repositories
 
 
         public GPSData AddGPSData(GPSData GPSData) {
-            GPSData.Id = 0;
+           
             if (GPSData == null)
             {
                 throw new ArgumentNullException("GPS data cannot be null");
