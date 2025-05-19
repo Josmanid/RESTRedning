@@ -1,9 +1,14 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RESTRedning.Models
 {
     public class GPSData
     {
+
+        [Key]
+        public int PrimaryKey { get; set; }
+
         private int _id;
         private DateTime _timeStamp;
         private double _latitude;
