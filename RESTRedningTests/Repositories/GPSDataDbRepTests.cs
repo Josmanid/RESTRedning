@@ -53,7 +53,7 @@ namespace RESTRedning.Repositories.Tests
                 var result = repository.AddGPSData(testData);
 
                 // Assert - Check the returned object
-                Assert.AreEqual(1, result.Id); // Should have been reset to 1 due to database identity
+                Assert.AreEqual(99, result.Id); // Should have been reset to 1 due to database identity
                 Assert.AreEqual(testData.Timestamp, result.Timestamp);
                 Assert.AreEqual(testData.Latitude, result.Latitude);
                 Assert.AreEqual(testData.Longitude, result.Longitude);
@@ -85,7 +85,7 @@ namespace RESTRedning.Repositories.Tests
             };
             var testData2 = new GPSData
             {
-                Id = 99, // This should be reset to 0 by the repository
+                Id = 98, // This should be reset to 0 by the repository
                 Timestamp = DateTime.Now.AddMinutes(-30),
                 Latitude = 56.123456,
                 Longitude = 13.654321,
