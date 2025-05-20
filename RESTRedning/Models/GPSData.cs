@@ -30,9 +30,9 @@ namespace RESTRedning.Models
             get => _timeStamp;
             set
             {
-                // Convert to Denmark local time
-                var danishTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
-                var localTime = TimeZoneInfo.ConvertTimeFromUtc(value.ToUniversalTime(), danishTimeZone);
+                //// Convert to Denmark local time
+                //var danishTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+                //var localTime = TimeZoneInfo.ConvertTimeFromUtc(value.ToUniversalTime(), danishTimeZone);
 
                 if (value > DateTime.Now)
                 {
